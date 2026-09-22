@@ -74,11 +74,11 @@ qualifications, and the classification result.
 ## 4. EBNF rules
 
 ```
-Resume         ::= PersonalInfo Contact {Experience} {Education} {Skill} {Qualification} Classification
+Resume         ::= PersonalInfo Contact Experience* Education* Skill* Qualification* Classification
 
 PersonalInfo   ::= "personal" name:STRING location:STRING
 
-Contact        ::= "contact" email:STRING [phone:STRING] github:STRING
+Contact        ::= "contact" email:STRING phone:STRING? github:STRING
 
 Experience     ::= "experience" position:STRING company:STRING years:INT description:STRING
 
@@ -89,4 +89,40 @@ Skill          ::= "skill" name:STRING
 Qualification  ::= "qualification" name:STRING level:("Beginner"|"Intermediate"|"Expert")
 
 Classification ::= "classification" label:STRING
+```
+
+## 5. Example instances
+
+Two sample texts that a parser built from the rules above should
+accept.
+
+**Example 1 — full profile, exercising repeated blocks:**
+
+```
+personal "Camila Restrepo" "Medellín, Colombia"
+
+contact "camila.restrepo@correo.com" "+57 300 555 1234" "camilarestrepo"
+
+experience "Backend Developer" "Rappi" 3 "Built and maintained REST APIs for the internal logistics platform."
+experience "Software Engineering Intern" "Bancolombia" 1 "Wrote automated test suites for the payments processing module."
+
+education "Universidad ICESI" "B.Sc. in Systems Engineering" "Focused on distributed systems and databases."
+
+skill "Java"
+skill "Spring Boot"
+
+qualification "Backend Development" "Expert"
+qualification "Cloud Computing" "Intermediate"
+
+classification "Backend Developer"
+```
+
+**Example 2 — minimal profile (zero experiences, education, skills, and qualifications):**
+
+```
+personal "Santiago Gómez" "Popayán, Colombia"
+
+contact "santiago.gomez@correo.com" "+57 315 555 6789" "santiagogomez"
+
+classification "Data Analyst"
 ```
