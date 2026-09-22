@@ -37,9 +37,56 @@ qualifications, and the classification result.
   `email` and `location`/`github` for contact info, so `phone` was added as an
   optional field rather than mandatory, since not every résumé will include
   it.
+- **`Classification.label` as a free STRING.** Kept open-ended rather than
+  restricted to a fixed set of job categories, to avoid maintaining an
+  enumerated list of every possible classification ResumeLens might produce.
+  This can be revisited and tightened to a fixed keyword set later if the
+  project needs stricter validation on this field.
 
-<!-- TODO: Section 2 — Terminals -->
+## 2. Terminals
 
-<!-- TODO: Section 3 — Non-terminals -->
+| Terminal | Type | Description |
+|---|---|---|
+| `STRING` | pattern | Free quoted text — used for names, descriptions, emails, and the classification label |
+| `INT` | pattern | Whole number — used for `years` |
+| `"personal"` | keyword | Marks the start of a PersonalInfo block |
+| `"contact"` | keyword | Marks the start of a Contact block |
+| `"experience"` | keyword | Marks the start of an Experience block |
+| `"education"` | keyword | Marks the start of an Education block |
+| `"skill"` | keyword | Marks the start of a Skill block |
+| `"qualification"` | keyword | Marks the start of a Qualification block |
+| `"classification"` | keyword | Marks the start of a Classification block |
+| `"Beginner"` \| `"Intermediate"` \| `"Expert"` | keyword set | Fixed values for `Qualification.level` |
 
-<!-- TODO: Section 4 — EBNF rules -->
+## 3. Non-terminals
+
+| Non-terminal | Made of |
+|---|---|
+| `Resume` | `PersonalInfo`, `Contact`, `Experience*`, `Education*`, `Skill*`, `Qualification*`, `Classification` |
+| `PersonalInfo` | `name`, `location` |
+| `Contact` | `email`, `phone` (optional), `github` |
+| `Experience` | `position`, `company`, `years`, `description` |
+| `Education` | `institution`, `degree`, `description` |
+| `Skill` | `name` |
+| `Qualification` | `name`, `level` |
+| `Classification` | `label` |
+
+## 4. EBNF rules
+
+```
+Resume         ::= PersonalInfo Contact {Experience} {Education} {Skill} {Qualification} Classification
+
+PersonalInfo   ::= "personal" name:STRING location:STRING
+
+Contact        ::= "contact" email:STRING [phone:STRING] github:STRING
+
+Experience     ::= "experience" position:STRING company:STRING years:INT description:STRING
+
+Education      ::= "education" institution:STRING degree:STRING description:STRING
+
+Skill          ::= "skill" name:STRING
+
+Qualification  ::= "qualification" name:STRING level:("Beginner"|"Intermediate"|"Expert")
+
+Classification ::= "classification" label:STRING
+```
