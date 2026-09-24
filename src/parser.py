@@ -4,7 +4,6 @@ from textx import metamodel_from_file
 resume_mm = metamodel_from_file('grammar/resume.tx')
 resume_model = resume_mm.model_from_file('examples/resume_01.resume')
 
-
 class Resume:
 
     def interpret(self, model):
