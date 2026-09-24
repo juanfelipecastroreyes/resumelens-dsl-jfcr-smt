@@ -10,7 +10,7 @@ education "Universidad ICESI" "B.Sc. in Systems Engineering" "Focused on distrib
 skill "Java"
 skill "Spring Boot"
 
-qualification "Backend Development" "Expert"
-qualification "Cloud Computing" "Intermediate"
+qualification "Backend Development" Expert
+qualification "Cloud Computing" Intermediate
 
 classification "Backend Developer"
