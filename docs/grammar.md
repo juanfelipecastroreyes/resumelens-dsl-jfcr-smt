@@ -8,19 +8,12 @@ the minimum structure required by the assignment: personal information,
 contact information, professional experience, education, skills, normalized
 qualifications, and the classification result.
 
-### 1.1 Fields per category
+Per-category fields and multiplicity are documented in
+`docs/metamodel.md`, which lists the classes textX generates from this
+grammar. The design decisions below explain *why* the grammar is shaped
+this way.
 
-| Category | Fields | Repeatable? |
-|---|---|---|
-| **PersonalInfo** | `name`, `location` | No — one per resume |
-| **Contact** | `email`, `phone` (optional), `github` | No — one per resume |
-| **Experience** | `position`, `company`, `years`, `description` | Yes — zero or more |
-| **Education** | `institution`, `degree`, `description` | Yes — zero or more |
-| **Skill** | `name` | Yes — zero or more |
-| **Qualification** | `name`, `level` | Yes — zero or more |
-| **Classification** | `label` | No — one per resume |
-
-### 1.2 Design decisions
+### 1.1 Design decisions
 
 - **Skill vs. Qualification.** These two categories look similar but serve
   different purposes. `Skill` is a raw, informal tag extracted directly from
