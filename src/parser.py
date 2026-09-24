@@ -1,8 +1,6 @@
 #%%
-from textx import metamodel_from_file
-
-resume_mm = metamodel_from_file('grammar/resume.tx')
-resume_model = resume_mm.model_from_file('examples/resume_01.resume')
+import sys
+from validator import validate
 
 class Resume:
 
@@ -28,5 +26,12 @@ class Resume:
         print(f"Classification: {model.classification.label}")
 
 
-resume = Resume()
-resume.interpret(resume_model)
+resume_path = sys.argv[1]
+ok, result = validate(resume_path)
+
+if ok:
+    resume = Resume()
+    resume.interpret(result)
+else:
+    print(f"INVALID: {resume_path}")
+    print(result)
