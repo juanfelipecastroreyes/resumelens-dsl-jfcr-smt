@@ -1,6 +1,6 @@
 # Parse Tree — resume_02.resume
 
-Ejemplo válido — perfil mínimo: 0 experiencias y sin `phone` (campo opcional).
+Valid example — minimal profile: 0 experiences and no `phone` (optional field).
 
 ```mermaid
 classDiagram
