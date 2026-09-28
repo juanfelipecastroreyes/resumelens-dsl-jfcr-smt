@@ -1,6 +1,6 @@
 # Parse Tree — resume_03.resume
 
-Ejemplo válido — perfil cargado: 3 experiencias, 2 educaciones, 3 skills, 2 qualifications.
+Valid example — extended profile: 3 experiences, 2 education entries, 3 skills, 2 qualifications.
 
 ```mermaid
 classDiagram

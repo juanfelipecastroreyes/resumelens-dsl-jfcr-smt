@@ -1,8 +1,8 @@
 # Parse Tree — resume_01.resume
 
-Ejemplo válido — perfil completo, con 2 experiencias y 2 qualifications. 
+Valid example — full profile, with 2 experiences and 2 qualifications.
 
-mermaid
+```mermaid
 classDiagram
     class Resume
 
@@ -66,3 +66,4 @@ classDiagram
     Resume --> Qualification1
     Resume --> Qualification2
     Resume --> Classification
+```
