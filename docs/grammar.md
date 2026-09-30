@@ -57,7 +57,7 @@ this way.
 |---|---|
 | `Resume` | `PersonalInfo`, `Contact`, `Experience*`, `Education*`, `Skill*`, `Qualification*`, `Classification` |
 | `PersonalInfo` | `name`, `location` |
-| `Contact` | `email`, `phone` (optional), `github` |
+| `Contact` | `email`, `github`, `phone` (optional) |
 | `Experience` | `position`, `company`, `years`, `description` |
 | `Education` | `institution`, `degree`, `description` |
 | `Skill` | `name` |
@@ -71,7 +71,7 @@ Resume         ::= PersonalInfo Contact Experience* Education* Skill* Qualificat
 
 PersonalInfo   ::= "personal" name:STRING location:STRING
 
-Contact        ::= "contact" email:STRING phone:STRING? github:STRING
+Contact        ::= "contact" email:STRING github:STRING phone:STRING?
 
 Experience     ::= "experience" position:STRING company:STRING years:INT description:STRING
 
@@ -94,7 +94,7 @@ accept.
 ```
 personal "Camila Restrepo" "Medellín, Colombia"
 
-contact "camila.restrepo@correo.com" "+57 300 555 1234" "camilarestrepo"
+contact "camila.restrepo@correo.com" "camilarestrepo" "+57 300 555 1234"
 
 experience "Backend Developer" "Rappi" 3 "Built and maintained REST APIs for the internal logistics platform."
 experience "Software Engineering Intern" "Bancolombia" 1 "Wrote automated test suites for the payments processing module."
@@ -104,8 +104,8 @@ education "Universidad ICESI" "B.Sc. in Systems Engineering" "Focused on distrib
 skill "Java"
 skill "Spring Boot"
 
-qualification "Backend Development" "Expert"
-qualification "Cloud Computing" "Intermediate"
+qualification "Backend Development" Expert
+qualification "Cloud Computing" Intermediate
 
 classification "Backend Developer"
 ```
@@ -115,7 +115,7 @@ classification "Backend Developer"
 ```
 personal "Santiago Gómez" "Popayán, Colombia"
 
-contact "santiago.gomez@correo.com" "+57 315 555 6789" "santiagogomez"
+contact "santiago.gomez@correo.com" "santiagogomez"
 
 classification "Data Analyst"
 ```
